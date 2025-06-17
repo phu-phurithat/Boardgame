@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/phu-phurithat/Boardgame.git'
+                checkoutSource repo: 'https://github.com/orgA/service-a.git'
             }
         }
         stage('Compile') {
