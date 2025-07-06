@@ -18,26 +18,26 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
 
-    - name: 📦 Cache Docker layers
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/docker
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+    # - name: 📦 Cache Docker layers
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/.cache/docker
+    #     key: ${{ runner.os }}-buildx-${{ github.sha }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-buildx-
 
     - name: 🔨 Build and test app with Docker (cached)
       run: |
         docker buildx build \
-          --cache-from=type=local,src=~/.cache/docker \
-          --cache-to=type=local,dest=~/.cache/docker-new \
+          # --cache-from=type=local,src=~/.cache/docker \
+          # --cache-to=type=local,dest=~/.cache/docker-new \
           -t ci-build-app \
           --load .
 
-    - name: 🔁 Move updated cache
-      run: |
-        rm -rf ~/.cache/docker
-        mv ~/.cache/docker-new ~/.cache/docker
+    # - name: 🔁 Move updated cache
+    #   run: |
+    #     rm -rf ~/.cache/docker
+    #     mv ~/.cache/docker-new ~/.cache/docker
 
     - name: 🐳 Login to DockerHub
       uses: docker/login-action@v3
