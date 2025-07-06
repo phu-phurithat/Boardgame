@@ -1,4 +1,4 @@
-name: Java CI via Docker
+name: CI
 on:
   push:
     branches-ignore: [main]
