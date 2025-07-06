@@ -1,10 +1,10 @@
 name: Java CI via Docker
-
 on:
   push:
-    branches: [ "main" ]
+    branches-ignore: [main]
   pull_request:
-    branches: [ "main" ]
+    branches-ignore: [main]
+  workflow_dispatch:              # Optional manual trigger
 
 jobs:
   build-test:
