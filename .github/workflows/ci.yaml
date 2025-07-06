@@ -42,5 +42,5 @@ jobs:
 
     - name: 🚀 Push Docker image
       run: |
-        docker tags ci-build-app phuphurithat/boardgame:latest
+        docker tag ci-build-app phuphurithat/boardgame:latest
         docker push phuphurithat/boardgame:latest
