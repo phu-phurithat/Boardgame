@@ -29,7 +29,7 @@ jobs:
     - name: 🔨 Build and test app with Docker (cached)
       run: |
         docker buildx build \
-          --builder docker-container \
+          --builder=container \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache-new \
           -t ci-build-app \
