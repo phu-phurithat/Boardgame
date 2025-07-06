@@ -32,13 +32,7 @@ jobs:
         docker build \
           --target=build \
           --cache-from=type=local,src=/tmp/.buildx-cache \
-          --cache-to=type=local,dest=/tmp/.buildx-cache-new \
           -t ci-build-app .
-
-    - name: 🧹 Move updated cache (to speed up next run)
-      run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
     - name: 🐳 Login to DockerHub
       uses: docker/login-action@v3
