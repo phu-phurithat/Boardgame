@@ -1,6 +1,6 @@
 # BoardgameListingWebApp
 
-![CI](https://github.com/phu-phurithat/Boardgame/actions/workflows/ci-docker.yml/badge.svg)
+![CI](https://github.com/phu-phurithat/Boardgame/actions/workflows/ci.yml/badge.svg)
 
 ## Description
 
@@ -53,3 +53,10 @@ This web application displays lists of board games and their reviews. While anyo
   - username: bugs    |     password: bunny (user role)
   - username: daffy   |     password: duck  (manager role)
 5. You can also sign-up as a new user and customize your role to play with the application! 😊
+
+## DevOps Part
+- CI/CD pipeline using GitHub Actions
+- Dockerization
+- Push to Docker Hub
+- Deploy to Kubernetes (with optional Ansible support)
+- README and badges
