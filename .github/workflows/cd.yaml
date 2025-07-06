@@ -1,13 +1,12 @@
 name: CD
 on:
-  pull_request:
+  merge:
     branches: [main]
   workflow_dispatch:              # Optional manual trigger
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
 
     steps:
       - name: 🚀 Deploy to k8s
