@@ -23,4 +23,4 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -k k8s/
-          kubectl rollout status deployment/my-app
+          kubectl rollout status deployment/boardgame-deployment -n boardgame
