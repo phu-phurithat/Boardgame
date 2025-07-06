@@ -1,20 +1,24 @@
-# ---- Build and Test Stage ----
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
+# Stage 1: Build and Test
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-WORKDIR /build
-
+WORKDIR /app
+# Copy pom.xml first to leverage Docker layer caching
 COPY pom.xml .
-COPY src ./src
+RUN mvn dependency:go-offline -B
 
-RUN mvn clean package -DskipTests=false
+# Now copy the rest of the source code
+COPY . .
 
-# ---- Runtime Stage ----
-FROM openjdk:17-alpine
+# Build and test the application
+RUN mvn clean verify
 
-ENV APP_HOME /usr/src/app
-WORKDIR $APP_HOME
+# Stage 2: Production
 
-COPY --from=build /build/target/*.jar app.jar
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 

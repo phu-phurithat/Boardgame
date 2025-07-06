@@ -1,5 +1,7 @@
 # BoardgameListingWebApp
 
+![CI](https://github.com/phu-phurithat/Boardgame/actions/workflows/ci-docker.yml/badge.svg)
+
 ## Description
 
 **Board Game Database Full-Stack Web Application.**
