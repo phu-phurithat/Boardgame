@@ -26,11 +26,17 @@ jobs:
     #     restore-keys: |
     #       ${{ runner.os }}-buildx-
 
+    # - name: 🔨 Build and test app with Docker (cached)
+    #   run: |
+    #     docker buildx build \
+    #       --cache-from=type=local,src=~/.cache/docker \
+    #       --cache-to=type=local,dest=~/.cache/docker-new \
+    #       -t ci-build-app \
+    #       --load .
+
     - name: 🔨 Build and test app with Docker (cached)
       run: |
         docker buildx build \
-          # --cache-from=type=local,src=~/.cache/docker \
-          # --cache-to=type=local,dest=~/.cache/docker-new \
           -t ci-build-app \
           --load .
 
