@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boardgame-deployment
+  labels:
+    app: boardgame
+    version: v1
+    environment: production
+    maintainer: phuphurithat
+    description: "Board Game Database Full-Stack Web Application"
+namespace: boardgame
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: boardgame
+  template:
+    metadata:
+      labels:
+        app: boardgame
+    spec:
+      containers:
+        - name: boardgame
+          image: phuphurithat/boardgame:latest
+          ports:
+            - containerPort: 8080

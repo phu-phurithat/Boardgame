@@ -1,0 +1,26 @@
+name: CD
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:              # Optional manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+
+    steps:
+      - name: 🚀 Deploy to k8s
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -k k8s/
+          kubectl rollout status deployment/boardgame-deployment -n boardgame
