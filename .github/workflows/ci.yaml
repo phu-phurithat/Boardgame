@@ -29,12 +29,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
-    - name: 🛠️ Build Maven project in Docker (with cache)
+    - name: 🔨 Build and test app with Docker (cached)
       run: |
-        docker build \
+        docker buildx build \
+          --builder default \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache-new \
-          -t ci-build-app .
+          -t ci-build-app \
+          --load .
 
     - name: 🔁 Move updated cache
       run: |
