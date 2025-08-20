@@ -8,7 +8,7 @@ metadata:
     environment: production
     maintainer: phuphurithat
     description: "Board Game Database Full-Stack Web Application"
-namespace: boardgame
+  namespace: boardgame
 spec:
   replicas: 3
   selector:
