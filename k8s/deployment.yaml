@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: boardgame-deployment
+  namespace: boardgame
   labels:
     app: boardgame
     version: v1
     environment: production
     maintainer: phuphurithat
     description: "Board Game Database Full-Stack Web Application"
-  namespace: boardgame
 spec:
   replicas: 3
   selector:
