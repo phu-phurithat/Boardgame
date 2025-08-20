@@ -8,7 +8,6 @@ metadata:
     version: v1
     environment: production
     maintainer: phuphurithat
-    description: "Board Game Database Full-Stack Web Application"
 spec:
   replicas: 3
   selector:
