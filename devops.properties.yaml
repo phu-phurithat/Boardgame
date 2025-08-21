@@ -1,0 +1,28 @@
+enable: true
+build_tool: "maven"
+build_image: true
+build_args:
+  - "BUILD_NUBER=$BUILD_NUMBER"
+  - "DEPLOY=$DEPLOY"
+  - "BRANCH=$BRANCH"
+  - "JENKINS_URL=$JENKINS_URL"
+
+unittest:
+  enable: true
+  # test_dir: "/tests"
+  # test_command: "mvn test"
+
+security:
+  code: true
+  secret: true
+  dependency: true
+  image: true
+  eol: true
+  dast:
+    enable: false
+    port: "5000"
+    path: "/"
+
+auto_deploy:
+  enable: false
+  target_env: "dev"
